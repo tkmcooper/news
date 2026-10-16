@@ -15,8 +15,10 @@
     <p class="card-text">{{ article.body }}</p>
   </div>
   <div class="card-footer text-center text-muted">
-    <a href="{% url 'article_edit' article.pk %}">Edit</a>
-    <a href="{% url 'article_delete' article.pk %}">Delete</a>
+    {% if article.author == user %}
+      <a href="{% url 'article_edit' article.pk %}">Edit</a>
+      <a href="{% url 'article_delete' article.pk %}">Delete</a>
+    {% endif %}
   </div>
 </div>
 <br>
